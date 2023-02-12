@@ -1,8 +1,8 @@
 import { a as loadedFormatters, i as initFormatters, b as loadedLocales, c as detectLocale, s as setLocale } from "./santos-e4584ab0.js";
 import { _ as __vitePreload } from "./preload-helper-f8376bb0.js";
 const localeTranslationLoaders = {
-  en: () => __vitePreload(() => import("./index-d8ef29cb.js"), true ? [] : void 0, import.meta.url),
-  pt: () => __vitePreload(() => import("./index-8f3a9a8a.js"), true ? [] : void 0, import.meta.url)
+  en: () => __vitePreload(() => import("./index-915288bb.js"), true ? [] : void 0, import.meta.url),
+  pt: () => __vitePreload(() => import("./index-0f065421.js"), true ? [] : void 0, import.meta.url)
 };
 const updateDictionary = (locale, dictionary) => loadedLocales[locale] = { ...loadedLocales[locale], ...dictionary };
 const importLocaleAsync = async (locale) => (await localeTranslationLoaders[locale]()).default;

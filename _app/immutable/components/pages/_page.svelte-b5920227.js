@@ -52,7 +52,7 @@ function i18nLeakShareDate(LL2, date) {
     return dateFormatter(date);
   }
 }
-function create_fragment$a(ctx) {
+function create_fragment$b(ctx) {
   let span;
   let t0;
   let t1;
@@ -180,7 +180,7 @@ function instance$5($$self, $$props, $$invalidate) {
 class Badge extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$5, create_fragment$a, safe_not_equal, { id: 0, value: 1, onRemoveCallback: 2 });
+    init(this, options, instance$5, create_fragment$b, safe_not_equal, { id: 0, value: 1, onRemoveCallback: 2 });
   }
 }
 function get_each_context$2(ctx, list, i) {
@@ -281,7 +281,7 @@ function create_each_block$2(ctx) {
     }
   };
 }
-function create_fragment$9(ctx) {
+function create_fragment$a(ctx) {
   let div1;
   let label_1;
   let t0;
@@ -446,7 +446,7 @@ function instance$4($$self, $$props, $$invalidate) {
 class Dropdown extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$4, create_fragment$9, safe_not_equal, {
+    init(this, options, instance$4, create_fragment$a, safe_not_equal, {
       id: 5,
       label: 0,
       values: 1,
@@ -454,7 +454,7 @@ class Dropdown extends SvelteComponent {
     });
   }
 }
-function create_fragment$8(ctx) {
+function create_fragment$9(ctx) {
   let img;
   let img_src_value;
   return {
@@ -493,10 +493,10 @@ function create_fragment$8(ctx) {
 class Fire_illustration extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment$8, safe_not_equal, {});
+    init(this, options, null, create_fragment$9, safe_not_equal, {});
   }
 }
-function create_fragment$7(ctx) {
+function create_fragment$8(ctx) {
   let img;
   let img_src_value;
   return {
@@ -535,10 +535,10 @@ function create_fragment$7(ctx) {
 class Hello_illustration extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment$7, safe_not_equal, {});
+    init(this, options, null, create_fragment$8, safe_not_equal, {});
   }
 }
-function create_fragment$6(ctx) {
+function create_fragment$7(ctx) {
   let img;
   let img_src_value;
   return {
@@ -577,7 +577,7 @@ function create_fragment$6(ctx) {
 class Nope_illustration extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment$6, safe_not_equal, {});
+    init(this, options, null, create_fragment$7, safe_not_equal, {});
   }
 }
 function get_each_context$1(ctx, list, i) {
@@ -879,7 +879,7 @@ function create_if_block$1(ctx) {
     }
   };
 }
-function create_fragment$5(ctx) {
+function create_fragment$6(ctx) {
   let div;
   let table;
   let thead;
@@ -1103,10 +1103,10 @@ function instance$3($$self, $$props, $$invalidate) {
 class Query_leaks_table extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$3, create_fragment$5, safe_not_equal, { id: 0, leaks: 1, includeEmail: 2 });
+    init(this, options, instance$3, create_fragment$6, safe_not_equal, { id: 0, leaks: 1, includeEmail: 2 });
   }
 }
-function create_fragment$4(ctx) {
+function create_fragment$5(ctx) {
   let dropdown;
   let current;
   dropdown = new Dropdown({
@@ -1178,7 +1178,49 @@ function instance$2($$self, $$props, $$invalidate) {
 class Query_leaks_target_dropdown extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$2, create_fragment$4, safe_not_equal, { onValueChange: 0 });
+    init(this, options, instance$2, create_fragment$5, safe_not_equal, { onValueChange: 0 });
+  }
+}
+function create_fragment$4(ctx) {
+  let img;
+  let img_src_value;
+  return {
+    c() {
+      img = element("img");
+      this.h();
+    },
+    l(nodes) {
+      img = claim_element(nodes, "IMG", {
+        id: true,
+        class: true,
+        src: true,
+        alt: true
+      });
+      this.h();
+    },
+    h() {
+      attr(img, "id", "reading-illustration");
+      attr(img, "class", "h-96");
+      if (!src_url_equal(img.src, img_src_value = base + "/svg/chubby_reading.svg"))
+        attr(img, "src", img_src_value);
+      attr(img, "alt", "cartoonish character reading a book");
+    },
+    m(target, anchor) {
+      insert_hydration(target, img, anchor);
+    },
+    p: noop,
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(img);
+    }
+  };
+}
+class Reading_illustration extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, null, create_fragment$4, safe_not_equal, {});
   }
 }
 function create_fragment$3(ctx) {
@@ -1590,6 +1632,69 @@ function create_each_block(ctx) {
     },
     d(detaching) {
       destroy_component(badge, detaching);
+    }
+  };
+}
+function create_else_block_1(ctx) {
+  let readingillustration;
+  let t0;
+  let p;
+  let t1_value = (
+    /*$LL*/
+    ctx[3].editingState() + ""
+  );
+  let t1;
+  let current;
+  readingillustration = new Reading_illustration({});
+  return {
+    c() {
+      create_component(readingillustration.$$.fragment);
+      t0 = space();
+      p = element("p");
+      t1 = text(t1_value);
+      this.h();
+    },
+    l(nodes) {
+      claim_component(readingillustration.$$.fragment, nodes);
+      t0 = claim_space(nodes);
+      p = claim_element(nodes, "P", { class: true });
+      var p_nodes = children(p);
+      t1 = claim_text(p_nodes, t1_value);
+      p_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(p, "class", "text-center");
+    },
+    m(target, anchor) {
+      mount_component(readingillustration, target, anchor);
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, p, anchor);
+      append_hydration(p, t1);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if ((!current || dirty & /*$LL*/
+      8) && t1_value !== (t1_value = /*$LL*/
+      ctx2[3].editingState() + ""))
+        set_data(t1, t1_value);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(readingillustration.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(readingillustration.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(readingillustration, detaching);
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(p);
     }
   };
 }
@@ -2050,7 +2155,8 @@ function create_fragment(ctx) {
     create_if_block_2,
     create_if_block_3,
     create_if_block_4,
-    create_if_block_5
+    create_if_block_5,
+    create_else_block_1
   ];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
@@ -2079,11 +2185,10 @@ function create_fragment(ctx) {
     ctx2[2] && /*affected*/
     ctx2[1].length === 0)
       return 4;
-    return -1;
+    return 5;
   }
-  if (~(current_block_type_index = select_block_type(ctx))) {
-    if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-  }
+  current_block_type_index = select_block_type(ctx);
+  if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
   return {
     c() {
       body = element("body");
@@ -2106,8 +2211,7 @@ function create_fragment(ctx) {
       if (if_block0)
         if_block0.c();
       t8 = space();
-      if (if_block1)
-        if_block1.c();
+      if_block1.c();
       this.h();
     },
     l(nodes) {
@@ -2143,8 +2247,7 @@ function create_fragment(ctx) {
         if_block0.l(section_nodes);
       section_nodes.forEach(detach);
       t8 = claim_space(div_nodes);
-      if (if_block1)
-        if_block1.l(div_nodes);
+      if_block1.l(div_nodes);
       div_nodes.forEach(detach);
       body_nodes.forEach(detach);
       this.h();
@@ -2178,9 +2281,7 @@ function create_fragment(ctx) {
       if (if_block0)
         if_block0.m(section, null);
       append_hydration(div, t8);
-      if (~current_block_type_index) {
-        if_blocks[current_block_type_index].m(div, null);
-      }
+      if_blocks[current_block_type_index].m(div, null);
       current = true;
       if (!mounted) {
         dispose = listen(form, "submit", prevent_default(
@@ -2238,30 +2339,22 @@ function create_fragment(ctx) {
       let previous_block_index = current_block_type_index;
       current_block_type_index = select_block_type(ctx2);
       if (current_block_type_index === previous_block_index) {
-        if (~current_block_type_index) {
-          if_blocks[current_block_type_index].p(ctx2, dirty);
-        }
+        if_blocks[current_block_type_index].p(ctx2, dirty);
       } else {
-        if (if_block1) {
-          group_outros();
-          transition_out(if_blocks[previous_block_index], 1, 1, () => {
-            if_blocks[previous_block_index] = null;
-          });
-          check_outros();
-        }
-        if (~current_block_type_index) {
-          if_block1 = if_blocks[current_block_type_index];
-          if (!if_block1) {
-            if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-            if_block1.c();
-          } else {
-            if_block1.p(ctx2, dirty);
-          }
-          transition_in(if_block1, 1);
-          if_block1.m(div, null);
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block1 = if_blocks[current_block_type_index];
+        if (!if_block1) {
+          if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block1.c();
         } else {
-          if_block1 = null;
+          if_block1.p(ctx2, dirty);
         }
+        transition_in(if_block1, 1);
+        if_block1.m(div, null);
       }
     },
     i(local) {
@@ -2287,9 +2380,7 @@ function create_fragment(ctx) {
       destroy_component(searchinput);
       if (if_block0)
         if_block0.d();
-      if (~current_block_type_index) {
-        if_blocks[current_block_type_index].d();
-      }
+      if_blocks[current_block_type_index].d();
       mounted = false;
       dispose();
     }
