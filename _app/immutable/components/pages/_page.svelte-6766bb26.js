@@ -1,6 +1,6 @@
 import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, q as text, a as space, M as svg_element, l as claim_element, m as children, r as claim_text, c as claim_space, N as claim_svg_element, h as detach, n as attr, b as insert_hydration, K as append_hydration, O as listen, F as is_function, u as set_data, C as noop, P as destroy_each, E as run_all, Q as src_url_equal, e as empty, L as component_subscribe, x as create_component, y as claim_component, z as mount_component, f as transition_in, t as transition_out, A as destroy_component, R as set_input_value, v as binding_callbacks, T as bind, U as prevent_default, V as add_flush_callback, d as check_outros, g as group_outros } from "../../chunks/index-8785c334.js";
 import { l as leaksEndpoint, d as dateFormatter, L as LL, S as SantosClient } from "../../chunks/santos-e4584ab0.js";
-import { b as base } from "../../chunks/paths-9648d9c1.js";
+import { b as base } from "../../chunks/paths-69ad0af0.js";
 import { w as writable } from "../../chunks/index-f0dcb114.js";
 const app = "";
 class SantosQueryImpl {

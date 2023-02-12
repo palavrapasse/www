@@ -1,4 +1,4 @@
-const base = "/www";
+const base = "";
 let assets = base;
 function set_assets(path) {
   assets = path;

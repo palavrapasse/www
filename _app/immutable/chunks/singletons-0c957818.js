@@ -1,5 +1,5 @@
 import { w as writable } from "./index-f0dcb114.js";
-import { a as assets } from "./paths-9648d9c1.js";
+import { a as assets } from "./paths-69ad0af0.js";
 let version = "";
 function set_version(value) {
   version = value;
