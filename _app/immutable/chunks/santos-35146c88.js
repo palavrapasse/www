@@ -206,7 +206,7 @@ class FetchClient {
     return fetch(url, fetchRequest);
   }
   resolveUrl(baseUrl2, endpoint, query) {
-    let url = `${baseUrl2}/${endpoint}`.replaceAll(new RegExp("(?<!:)\\/{2,}", "g"), "/");
+    let url = `${baseUrl2}/${endpoint}`.replaceAll(/([^:]\/)\/+/g, "$1");
     if (query) {
       url = `${url}?${new URLSearchParams(query)}`;
     }
