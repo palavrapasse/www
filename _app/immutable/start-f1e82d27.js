@@ -858,9 +858,9 @@ class Root extends SvelteComponent {
 }
 const matchers = {};
 const nodes = [
-  () => __vitePreload(() => import("./chunks/0-23dc4488.js"), true ? ["./chunks\\0-23dc4488.js","./chunks\\_layout-2a815718.js","./components\\layout.svelte-c0d0fccb.js","./chunks\\index-8785c334.js"] : void 0, import.meta.url),
-  () => __vitePreload(() => import("./chunks/1-78c90e27.js"), true ? ["./chunks\\1-78c90e27.js","./components\\error.svelte-45360d9f.js","./chunks\\index-8785c334.js","./chunks\\singletons-0c957818.js","./chunks\\index-f0dcb114.js","./chunks\\paths-69ad0af0.js"] : void 0, import.meta.url),
-  () => __vitePreload(() => import("./chunks/2-8df88909.js"), true ? ["./chunks\\2-8df88909.js","./chunks\\_page-867b69d3.js","./chunks\\santos-35146c88.js","./chunks\\index-f0dcb114.js","./chunks\\index-8785c334.js","./chunks\\preload-helper-f8376bb0.js","./components\\pages\\_page.svelte-fac678ea.js","./chunks\\paths-69ad0af0.js","./assets\\_page-17fe4e63.css"] : void 0, import.meta.url)
+  () => __vitePreload(() => import("./chunks/0-23dc4488.js"), true ? ["./chunks/0-23dc4488.js","./chunks/_layout-2a815718.js","./components/layout.svelte-c0d0fccb.js","./chunks/index-8785c334.js"] : void 0, import.meta.url),
+  () => __vitePreload(() => import("./chunks/1-78c90e27.js"), true ? ["./chunks/1-78c90e27.js","./components/error.svelte-45360d9f.js","./chunks/index-8785c334.js","./chunks/singletons-0c957818.js","./chunks/index-f0dcb114.js","./chunks/paths-69ad0af0.js"] : void 0, import.meta.url),
+  () => __vitePreload(() => import("./chunks/2-8df88909.js"), true ? ["./chunks/2-8df88909.js","./chunks/_page-867b69d3.js","./chunks/santos-35146c88.js","./chunks/index-f0dcb114.js","./chunks/index-8785c334.js","./chunks/preload-helper-f8376bb0.js","./components/pages/_page.svelte-fac678ea.js","./chunks/paths-69ad0af0.js","./assets/_page-17fe4e63.css"] : void 0, import.meta.url)
 ];
 const server_loads = [];
 const dictionary = {
