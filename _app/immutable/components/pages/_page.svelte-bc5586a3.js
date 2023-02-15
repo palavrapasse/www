@@ -986,7 +986,7 @@ function create_fragment$6(ctx) {
       attr(table, "id", table_id_value = "leaks-query-table-" + /*id*/
       ctx[0]);
       attr(table, "class", "table");
-      attr(div, "class", "flex w-full overflow-x-auto");
+      attr(div, "class", "flex w-full overflow-x-auto mt-5");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1289,7 +1289,7 @@ function create_fragment$2(ctx) {
       attr(input, "type", "search");
       attr(input, "name", "search-input");
       attr(input, "id", input_id_value = "search-input-" + /*id*/
-      ctx[1]);
+      ctx[2]);
     },
     m(target, anchor) {
       insert_hydration(target, input, anchor);
@@ -1298,20 +1298,21 @@ function create_fragment$2(ctx) {
         /*value*/
         ctx[0]
       );
+      ctx[4](input);
       if (!mounted) {
         dispose = listen(
           input,
           "input",
           /*input_input_handler*/
-          ctx[2]
+          ctx[3]
         );
         mounted = true;
       }
     },
     p(ctx2, [dirty]) {
       if (dirty & /*id*/
-      2 && input_id_value !== (input_id_value = "search-input-" + /*id*/
-      ctx2[1])) {
+      4 && input_id_value !== (input_id_value = "search-input-" + /*id*/
+      ctx2[2])) {
         attr(input, "id", input_id_value);
       }
       if (dirty & /*value*/
@@ -1328,6 +1329,7 @@ function create_fragment$2(ctx) {
     d(detaching) {
       if (detaching)
         detach(input);
+      ctx[4](null);
       mounted = false;
       dispose();
     }
@@ -1336,22 +1338,31 @@ function create_fragment$2(ctx) {
 function instance$1($$self, $$props, $$invalidate) {
   let { id } = $$props;
   let { value } = $$props;
+  let { inputElement } = $$props;
   function input_input_handler() {
     value = this.value;
     $$invalidate(0, value);
   }
+  function input_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      inputElement = $$value;
+      $$invalidate(1, inputElement);
+    });
+  }
   $$self.$$set = ($$props2) => {
     if ("id" in $$props2)
-      $$invalidate(1, id = $$props2.id);
+      $$invalidate(2, id = $$props2.id);
     if ("value" in $$props2)
       $$invalidate(0, value = $$props2.value);
+    if ("inputElement" in $$props2)
+      $$invalidate(1, inputElement = $$props2.inputElement);
   };
-  return [value, id, input_input_handler];
+  return [value, inputElement, id, input_input_handler, input_binding];
 }
 class Search_input extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, { id: 1, value: 0 });
+    init(this, options, instance$1, create_fragment$2, safe_not_equal, { id: 2, value: 0, inputElement: 1 });
   }
 }
 function create_fragment$1(ctx) {
@@ -1484,7 +1495,7 @@ function onResetEvent(store) {
 }
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[11] = list[i];
+  child_ctx[13] = list[i];
   return child_ctx;
 }
 function create_if_block_6(ctx) {
@@ -1523,7 +1534,7 @@ function create_if_block_6(ctx) {
     },
     p(ctx2, dirty) {
       if (dirty & /*affected, removeFromAffectedQuery*/
-      66) {
+      130) {
         each_value = /*affected*/
         ctx2[1];
         let i;
@@ -1574,9 +1585,9 @@ function create_each_block(ctx) {
   function func() {
     return (
       /*func*/
-      ctx[9](
+      ctx[11](
         /*email*/
-        ctx[11]
+        ctx[13]
       )
     );
   }
@@ -1584,11 +1595,11 @@ function create_each_block(ctx) {
     props: {
       id: (
         /*email*/
-        ctx[11]
+        ctx[13]
       ),
       value: (
         /*email*/
-        ctx[11]
+        ctx[13]
       ),
       onRemoveCallback: func
     }
@@ -1610,11 +1621,11 @@ function create_each_block(ctx) {
       if (dirty & /*affected*/
       2)
         badge_changes.id = /*email*/
-        ctx[11];
+        ctx[13];
       if (dirty & /*affected*/
       2)
         badge_changes.value = /*email*/
-        ctx[11];
+        ctx[13];
       if (dirty & /*affected*/
       2)
         badge_changes.onRemoveCallback = func;
@@ -1641,7 +1652,7 @@ function create_else_block_1(ctx) {
   let p;
   let t1_value = (
     /*$LL*/
-    ctx[3].editingState() + ""
+    ctx[4].editingState() + ""
   );
   let t1;
   let current;
@@ -1675,8 +1686,8 @@ function create_else_block_1(ctx) {
     },
     p(ctx2, dirty) {
       if ((!current || dirty & /*$LL*/
-      8) && t1_value !== (t1_value = /*$LL*/
-      ctx2[3].editingState() + ""))
+      16) && t1_value !== (t1_value = /*$LL*/
+      ctx2[4].editingState() + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1735,7 +1746,7 @@ function create_if_block_4(ctx) {
   let p;
   let t1_value = (
     /*$LL*/
-    ctx[3].throttledState() + ""
+    ctx[4].throttledState() + ""
   );
   let t1;
   let current;
@@ -1764,8 +1775,8 @@ function create_if_block_4(ctx) {
     },
     p(ctx2, dirty) {
       if ((!current || dirty & /*$LL*/
-      8) && t1_value !== (t1_value = /*$LL*/
-      ctx2[3].throttledState() + ""))
+      16) && t1_value !== (t1_value = /*$LL*/
+      ctx2[4].throttledState() + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1793,7 +1804,7 @@ function create_if_block_3(ctx) {
   let p;
   let t1_value = (
     /*$LL*/
-    ctx[3].failureState() + ""
+    ctx[4].failureState() + ""
   );
   let t1;
   let current;
@@ -1822,8 +1833,8 @@ function create_if_block_3(ctx) {
     },
     p(ctx2, dirty) {
       if ((!current || dirty & /*$LL*/
-      8) && t1_value !== (t1_value = /*$LL*/
-      ctx2[3].failureState() + ""))
+      16) && t1_value !== (t1_value = /*$LL*/
+      ctx2[4].failureState() + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1851,7 +1862,7 @@ function create_if_block_2(ctx) {
   let p;
   let t1_value = (
     /*$LL*/
-    ctx[3].loadingState() + ""
+    ctx[4].loadingState() + ""
   );
   let t1;
   let current;
@@ -1880,8 +1891,8 @@ function create_if_block_2(ctx) {
     },
     p(ctx2, dirty) {
       if ((!current || dirty & /*$LL*/
-      8) && t1_value !== (t1_value = /*$LL*/
-      ctx2[3].loadingState() + ""))
+      16) && t1_value !== (t1_value = /*$LL*/
+      ctx2[4].loadingState() + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1913,7 +1924,7 @@ function create_if_block(ctx) {
   function select_block_type_1(ctx2, dirty) {
     if (
       /*$QueryLeaksStore*/
-      ctx2[4].value.length > 0
+      ctx2[5].value.length > 0
     )
       return 0;
     return 1;
@@ -1974,37 +1985,43 @@ function create_if_block(ctx) {
   };
 }
 function create_else_block(ctx) {
-  let t0_value = (
-    /*$LL*/
-    ctx[3].leaksQueryNotFoundResponse() + ""
-  );
-  let t0;
-  let t1;
   let thumbsupillustration;
+  let t0;
+  let p;
+  let t1_value = (
+    /*$LL*/
+    ctx[4].leaksQueryNotFoundResponse() + ""
+  );
+  let t1;
   let current;
   thumbsupillustration = new Thumbs_up_illustration({});
   return {
     c() {
-      t0 = text(t0_value);
-      t1 = space();
       create_component(thumbsupillustration.$$.fragment);
+      t0 = space();
+      p = element("p");
+      t1 = text(t1_value);
     },
     l(nodes) {
-      t0 = claim_text(nodes, t0_value);
-      t1 = claim_space(nodes);
       claim_component(thumbsupillustration.$$.fragment, nodes);
+      t0 = claim_space(nodes);
+      p = claim_element(nodes, "P", {});
+      var p_nodes = children(p);
+      t1 = claim_text(p_nodes, t1_value);
+      p_nodes.forEach(detach);
     },
     m(target, anchor) {
-      insert_hydration(target, t0, anchor);
-      insert_hydration(target, t1, anchor);
       mount_component(thumbsupillustration, target, anchor);
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, p, anchor);
+      append_hydration(p, t1);
       current = true;
     },
     p(ctx2, dirty) {
       if ((!current || dirty & /*$LL*/
-      8) && t0_value !== (t0_value = /*$LL*/
-      ctx2[3].leaksQueryNotFoundResponse() + ""))
-        set_data(t0, t0_value);
+      16) && t1_value !== (t1_value = /*$LL*/
+      ctx2[4].leaksQueryNotFoundResponse() + ""))
+        set_data(t1, t1_value);
     },
     i(local) {
       if (current)
@@ -2017,11 +2034,11 @@ function create_else_block(ctx) {
       current = false;
     },
     d(detaching) {
+      destroy_component(thumbsupillustration, detaching);
       if (detaching)
         detach(t0);
       if (detaching)
-        detach(t1);
-      destroy_component(thumbsupillustration, detaching);
+        detach(p);
     }
   };
 }
@@ -2036,7 +2053,7 @@ function create_if_block_1(ctx) {
       ),
       leaks: (
         /*$QueryLeaksStore*/
-        ctx[4].value
+        ctx[5].value
       ),
       includeEmail: (
         /*affected*/
@@ -2063,9 +2080,9 @@ function create_if_block_1(ctx) {
         queryleakstable_changes.id = /*value*/
         ctx2[0];
       if (dirty & /*$QueryLeaksStore*/
-      16)
+      32)
         queryleakstable_changes.leaks = /*$QueryLeaksStore*/
-        ctx2[4].value;
+        ctx2[5].value;
       if (dirty & /*affected, value*/
       3)
         queryleakstable_changes.includeEmail = /*affected*/
@@ -2094,14 +2111,14 @@ function create_fragment(ctx) {
   let h1;
   let t0_value = (
     /*$LL*/
-    ctx[3].homepageTitle() + ""
+    ctx[4].homepageTitle() + ""
   );
   let t0;
   let t1;
   let h2;
   let t2_value = (
     /*$LL*/
-    ctx[3].homepageDescription() + ""
+    ctx[4].homepageDescription() + ""
   );
   let t2;
   let t3;
@@ -2110,11 +2127,12 @@ function create_fragment(ctx) {
   let t4;
   let searchinput;
   let updating_value;
+  let updating_inputElement;
   let t5;
   let span;
   let t6_value = (
     /*$LL*/
-    ctx[3].leakSearchHint() + ""
+    ctx[4].leakSearchHint() + ""
   );
   let t6;
   let t7;
@@ -2129,12 +2147,15 @@ function create_fragment(ctx) {
     props: {
       onValueChange: (
         /*setLeaksTargetFilter*/
-        ctx[7]
+        ctx[8]
       )
     }
   });
   function searchinput_value_binding(value) {
-    ctx[8](value);
+    ctx[9](value);
+  }
+  function searchinput_inputElement_binding(value) {
+    ctx[10](value);
   }
   let searchinput_props = { id: "affected-email" };
   if (
@@ -2144,8 +2165,16 @@ function create_fragment(ctx) {
     searchinput_props.value = /*value*/
     ctx[0];
   }
+  if (
+    /*inputElement*/
+    ctx[3] !== void 0
+  ) {
+    searchinput_props.inputElement = /*inputElement*/
+    ctx[3];
+  }
   searchinput = new Search_input({ props: searchinput_props });
   binding_callbacks.push(() => bind(searchinput, "value", searchinput_value_binding));
+  binding_callbacks.push(() => bind(searchinput, "inputElement", searchinput_inputElement_binding));
   let if_block0 = (
     /*affected*/
     ctx[1].length > 0 && create_if_block_6(ctx)
@@ -2162,23 +2191,23 @@ function create_fragment(ctx) {
   function select_block_type(ctx2, dirty) {
     if (
       /*$QueryLeaksStore*/
-      ctx2[4].success && !/*isEditing*/
+      ctx2[5].success && !/*isEditing*/
       ctx2[2]
     )
       return 0;
     if (
       /*$QueryLeaksStore*/
-      ctx2[4].loading
+      ctx2[5].loading
     )
       return 1;
     if (
       /*$QueryLeaksStore*/
-      ctx2[4].failure
+      ctx2[5].failure
     )
       return 2;
     if (
       /*$QueryLeaksStore*/
-      ctx2[4].throttled
+      ctx2[5].throttled
     )
       return 3;
     if (!/*isEditing*/
@@ -2229,7 +2258,7 @@ function create_fragment(ctx) {
       t2 = claim_text(h2_nodes, t2_value);
       h2_nodes.forEach(detach);
       t3 = claim_space(div_nodes);
-      form = claim_element(div_nodes, "FORM", { class: true });
+      form = claim_element(div_nodes, "FORM", { class: true, action: true });
       var form_nodes = children(form);
       claim_component(queryleakstargetdropdown.$$.fragment, form_nodes);
       t4 = claim_space(form_nodes);
@@ -2253,9 +2282,10 @@ function create_fragment(ctx) {
       this.h();
     },
     h() {
-      attr(h1, "class", "text-2xl sm:text-4xl h-12 text-center");
-      attr(h2, "class", "text-lg sm:text-xl h-16 text-center");
-      attr(form, "class", "h-14 w-full text-center flex flex-row");
+      attr(h1, "class", "text-2xl sm:text-4xl text-center");
+      attr(h2, "class", "text-lg sm:text-xl h-16 text-center mt-1");
+      attr(form, "class", "w-full text-center flex flex-row");
+      attr(form, "action", ".");
       attr(span, "class", "text-center");
       attr(section, "class", "flex-row");
       attr(div, "class", "md:container md:mx-auto flex flex-col items-center");
@@ -2286,19 +2316,19 @@ function create_fragment(ctx) {
       if (!mounted) {
         dispose = listen(form, "submit", prevent_default(
           /*searchAffected*/
-          ctx[5]
+          ctx[6]
         ));
         mounted = true;
       }
     },
     p(ctx2, [dirty]) {
       if ((!current || dirty & /*$LL*/
-      8) && t0_value !== (t0_value = /*$LL*/
-      ctx2[3].homepageTitle() + ""))
+      16) && t0_value !== (t0_value = /*$LL*/
+      ctx2[4].homepageTitle() + ""))
         set_data(t0, t0_value);
       if ((!current || dirty & /*$LL*/
-      8) && t2_value !== (t2_value = /*$LL*/
-      ctx2[3].homepageDescription() + ""))
+      16) && t2_value !== (t2_value = /*$LL*/
+      ctx2[4].homepageDescription() + ""))
         set_data(t2, t2_value);
       const searchinput_changes = {};
       if (!updating_value && dirty & /*value*/
@@ -2308,10 +2338,17 @@ function create_fragment(ctx) {
         ctx2[0];
         add_flush_callback(() => updating_value = false);
       }
+      if (!updating_inputElement && dirty & /*inputElement*/
+      8) {
+        updating_inputElement = true;
+        searchinput_changes.inputElement = /*inputElement*/
+        ctx2[3];
+        add_flush_callback(() => updating_inputElement = false);
+      }
       searchinput.$set(searchinput_changes);
       if ((!current || dirty & /*$LL*/
-      8) && t6_value !== (t6_value = /*$LL*/
-      ctx2[3].leakSearchHint() + ""))
+      16) && t6_value !== (t6_value = /*$LL*/
+      ctx2[4].leakSearchHint() + ""))
         set_data(t6, t6_value);
       if (
         /*affected*/
@@ -2389,18 +2426,20 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
   let $LL;
   let $QueryLeaksStore;
-  component_subscribe($$self, LL, ($$value) => $$invalidate(3, $LL = $$value));
-  component_subscribe($$self, QueryLeaksStore, ($$value) => $$invalidate(4, $QueryLeaksStore = $$value));
+  component_subscribe($$self, LL, ($$value) => $$invalidate(4, $LL = $$value));
+  component_subscribe($$self, QueryLeaksStore, ($$value) => $$invalidate(5, $QueryLeaksStore = $$value));
   let value = "";
   let affected = [];
   let isEditing = true;
   let target;
+  let inputElement;
   function searchAffected() {
     const affectedEmails = [...affected];
     const trimValue = value.trim();
     if (trimValue.length > 0) {
       affectedEmails.push(trimValue);
     }
+    inputElement.blur();
     $$invalidate(2, isEditing = false);
     QueryLeaksStore.affected(affectedEmails, target);
   }
@@ -2413,6 +2452,10 @@ function instance($$self, $$props, $$invalidate) {
   function searchinput_value_binding(value$1) {
     value = value$1;
     $$invalidate(0, value), $$invalidate(1, affected);
+  }
+  function searchinput_inputElement_binding(value2) {
+    inputElement = value2;
+    $$invalidate(3, inputElement);
   }
   const func = (email) => removeFromAffectedQuery(email);
   $$self.$$.update = () => {
@@ -2435,12 +2478,14 @@ function instance($$self, $$props, $$invalidate) {
     value,
     affected,
     isEditing,
+    inputElement,
     $LL,
     $QueryLeaksStore,
     searchAffected,
     removeFromAffectedQuery,
     setLeaksTargetFilter,
     searchinput_value_binding,
+    searchinput_inputElement_binding,
     func
   ];
 }
